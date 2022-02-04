@@ -8,28 +8,57 @@ namespace ArakawaHistoryConverter
         int month;
         int day;
         List<string> content;
+
         public History(int year, int month, int day, List<string> content)
         {
-            this.SetYear(year);
-            this.SetMonth(month);
-            this.SetDay(day);
-            this.SetContent(content);
+            SetYear(year);
+            SetMonth(month);
+            SetDay(day);
+            SetContent(content);
         }
-        public void SetYear(int year)
+
+        private void SetYear(int year)
         {
             this.year = year;
         }
-        public void SetMonth(int month)
+
+        private void SetMonth(int month)
         {
             this.month = month;
         }
-        public void SetDay(int day)
+
+        private void SetDay(int day)
         {
             this.day = day;
         }
-        public void SetContent(List<string> content)
+
+        private void SetContent(List<string> content)
         {
-            this.content = content;
+            this.content = new List<string>(content);
+        }
+
+        public string getDay()
+        {
+            return "    Date: \"" + this.year + "/" + this.month + "/" + this.day + "\",";
+        }
+
+        public string getContent()
+        {
+            string output = "";
+            output += "    Content: [\n";
+            for (int i = 0; i < content.Count; i++)
+            {
+                if (i < content.Count - 1)
+                {
+                    output += "      \"" + content[i].Replace("<br>", "") + "\",\n";
+                }
+                else
+                {
+                    output += "      \"" + content[i] + "\"\n";
+                }
+            }
+            output += "    ]";
+            return output;
         }
     }
 }
