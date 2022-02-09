@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ArakawaHistoryConverter
 {
@@ -39,7 +40,7 @@ namespace ArakawaHistoryConverter
 
         public string getDay()
         {
-            return "    Date: \"" + this.year + "/" + this.month + "/" + this.day + "\",";
+            return "    Date: \"" + year + "/" + string.Format("{0:00}", month) + "/" + string.Format("{0:00}", day) + "\",";
         }
 
         public string getContent()
