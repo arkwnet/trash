@@ -52,20 +52,22 @@ namespace ArakawaHistoryConverter
             }
             streamReader.Close();
             string output = "";
+            output += "const history = [\n";
             for (int i = 0; i < history.Count; i++)
             {
-                output = AddOutputText(output, "{");
+                output = AddOutputText(output, "  {");
                 output = AddOutputText(output, history[i].getDay());
                 output = AddOutputText(output, history[i].getContent());
                 if (i == history.Count - 1)
                 {
-                    output = AddOutputText(output, "}");
+                    output = AddOutputText(output, "  }");
                 }
                 else
                 {
-                    output = AddOutputText(output, "},");
+                    output = AddOutputText(output, "  },");
                 }
             }
+            output += "];\n";
             StreamWriter streamWriter = new StreamWriter("history.js", false, Encoding.UTF8);
             streamWriter.Write(output);
             streamWriter.Close();

@@ -40,25 +40,25 @@ namespace ArakawaHistoryConverter
 
         public string getDay()
         {
-            return "    Date: \"" + year + "/" + string.Format("{0:00}", month) + "/" + string.Format("{0:00}", day) + "\",";
+            return "      Date: \"" + year + "/" + string.Format("{0:00}", month) + "/" + string.Format("{0:00}", day) + "\",";
         }
 
         public string getContent()
         {
             string output = "";
-            output += "    Content: [\n";
+            output += "      Content: [\n";
             for (int i = 0; i < content.Count; i++)
             {
                 if (i < content.Count - 1)
                 {
-                    output += "      \"" + content[i].Replace("<br>", "") + "\",\n";
+                    output += "        \"" + content[i].Replace("<br>", "") + "\",\n";
                 }
                 else
                 {
-                    output += "      \"" + content[i] + "\"\n";
+                    output += "        \"" + content[i] + "\"\n";
                 }
             }
-            output += "    ]";
+            output += "      ]";
             return output;
         }
     }
